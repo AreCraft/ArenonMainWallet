@@ -1361,14 +1361,14 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 // miner's coin base reward
 int64_t GetRewardByHeight(int nHeight)
 {
-	const int YEARLY_BLOCKCOUNT = 525650;
+	const int YEARLY_BLOCKCOUNT = 10512000;
 	int64_t nReward;
 	if (nHeight < YEARLY_BLOCKCOUNT)
 		nReward = STATIC_REWARD;
 	else if (nHeight < (1 * YEARLY_BLOCKCOUNT))
-		nReward = STATIC_REWARD * 1.66;
+		nReward = STATIC_REWARD * 1.00;
 	else
-		nReward = 1.66 * COIN;
+		nReward = 1.00 * COIN;
 
 	return nReward;
 }
@@ -1380,7 +1380,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees)
 	if (nHeight < 6)
 		nSubsidy =  3600000* COIN;
 	else
-		nSubsidy = 2 * COIN;
+		nSubsidy = 1 * COIN;
 
 	// add fees.
 	return nSubsidy + nFees;
@@ -1395,7 +1395,7 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
 	return nSubsidy + nFees;
 }
 
-static int64_t nTargetTimespan = 10 * 60;  // 10 mins
+static int64_t nTargetTimespan = 1 * 60;  // 1 mins
 
 // ppcoin: find last block index up to pindex
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake)
